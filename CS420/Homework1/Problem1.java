@@ -1,9 +1,13 @@
 import java.lang.Thread;
 
 /*
+Course: CS 420
 Assignment: Homework 1
 Problem: Problem1
 Made By: Cameron Stark
+
+Function: 
+Instructions: 
 */
 
 public class Problem1 {
