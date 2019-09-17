@@ -14,11 +14,14 @@ Made By: Cameron Stark
 
 public class Problem3 {
 
+    
     public static void main(String[] args) {
         Problem3 problem3 = new Problem3();
 
         int userValue = problem3.getUserValue();
-        problem3.checkUserValue(userValue);
+        
+        problem3.checkIfLessThan0(userValue);
+        problem3.checkIfGreaterThan10(userValue);
     }
 
     public int getUserValue() {
@@ -30,9 +33,11 @@ public class Problem3 {
         return value;
     }
 
-    public void checkUserValue(int value) {
-        //assert value < 0 : "The Entered Number is out of range";
-        //assert value > 10 : "The Entered Number is out of range";
-        assert (value > 0 || value > 10) : "The Entered Number is out of range";
+    public void checkIfLessThan0(int value) {
+        assert (value < 0) : "The Entered Number is out of range";
+    }
+
+    public void checkIfGreaterThan10(int value) {
+        assert (value > 10) : "The Entered Number is out of range";
     }
 }

@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.TypeCheckError;
-
 /*
 Write a Java program that prompts the user to enter two integers and displays their sum. 
 Use exception handling to prompt the user for reading the number again if the input is incorrect
