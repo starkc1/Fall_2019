@@ -6,8 +6,14 @@ Assignment: Homework 1
 Problem: Problem1
 Made By: Cameron Stark
 
-Function: 
+Function: Start Three Threads and have them print from 1 to 4000 with a letter at the from A, B, or C
 Instructions: 
+    Step 1: javac Problem1.java
+    Step 2: java Problem1.java
+
+    or
+
+    Load file into eclipse and run
 */
 
 public class Problem1 {

@@ -7,8 +7,14 @@ Assignment: Homework 1
 Problem: Problem2
 Made By: Cameron Stark
 
-Function: 
+Function: Start Three Threads but implement as runnables and have them print from 1 to 4000 with a letter at the from A, B, or C
 Instructions: 
+    Step 1: javac Problem2.java
+    Step 2: java Problem2.java
+
+    or
+
+    Load file into eclipse and run
 */
 
 public class Problem2 implements Runnable {

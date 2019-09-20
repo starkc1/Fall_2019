@@ -7,8 +7,14 @@ Assignment: Homework 1
 Problem: Problem3
 Made By: Cameron Stark
 
-Function: 
+Function: Start Three Threads and have them print from 1 to 4000 with a letter at the from A, B, or C, but yielding every 10th print for each thread
 Instructions: 
+    Step 1: javac Problem3.java
+    Step 2: java Problem3.java
+
+    or
+
+    Load file into eclipse and run
 */
 
 public class Problem3 implements Runnable {
