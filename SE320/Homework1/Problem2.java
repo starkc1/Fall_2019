@@ -27,6 +27,7 @@ public class Problem2 {
         }
     }
 
+    //create the array of size 100 with random values
     public int[] createArray() {
         int array[] = new int[100];
         Random rand = new Random();
@@ -38,6 +39,7 @@ public class Problem2 {
         return array;
     }
 
+    //requests for user input
     public int getUserInput() {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
@@ -49,6 +51,7 @@ public class Problem2 {
         return index;
     }
 
+    //takes the random array and the user input and checks for value at index if no index, throws exception
     public int getValueAtIndex(int array[], int index) {
         int value = 0;
 

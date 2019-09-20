@@ -21,6 +21,7 @@ public class Problem1 {
         System.out.println(numbers[0] + " + " + numbers[1] + " = " + result);
     }
 
+    //gets user input for the two integer values and then checks if they are Integers
     public int[] getUserInput() {
         int nums[] = new int[2];
         int num1;
@@ -38,6 +39,7 @@ public class Problem1 {
         return nums;
     }
 
+    //checks if the given string is an integer, if not requests for user to enter Integer
     public static int parseInt(String num, Scanner scanner) {
         boolean correct = false;
         int number = 0;
@@ -54,6 +56,7 @@ public class Problem1 {
         return number;
     }
 
+    //adds the two numbers
     public int addNumbers(int[] nums) {
         int result;
 

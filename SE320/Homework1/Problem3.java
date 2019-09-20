@@ -24,6 +24,7 @@ public class Problem3 {
         problem3.checkIfGreaterThan10(userValue);
     }
 
+    //requests user for integer between 0 and 10
     public int getUserValue() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an integer between 0 and 10");
@@ -33,10 +34,12 @@ public class Problem3 {
         return value;
     }
 
+    //uses an assertion to check if value is less than 0
     public void checkIfLessThan0(int value) {
         assert (value < 0) : "The Entered Number is out of range";
     }
 
+    //uses an assertion to check if value is greater than 10
     public void checkIfGreaterThan10(int value) {
         assert (value > 10) : "The Entered Number is out of range";
     }
