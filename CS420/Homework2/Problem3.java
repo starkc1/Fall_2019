@@ -4,24 +4,22 @@ import java.util.concurrent.TimeUnit;
 /*
 Course: CS 420
 Assignment: Homework 2
-Problem: Problem 1
+Problem: Problem 3
 Made By: Cameron Stark
 
-Function: A Program to show the time elapsed for each of the three threads as well as the 
-    main function to show the time and order of the functions/Threads being called 
+Function: Program to have each thread join, therefore causing the program to wait until the previous thread closes.
 Instructions: 
-    Step 1: javac Problem1.java
-    Step 2: java Problem1.java
+    Step 1: javac Problem3.java
+    Step 2: java Problem3.java
 
     or
 
     Load file into eclipse and run
 */
 
-public class Problem1 {
+public class Problem3 {
 
     public static void main(String[] args) {
-
 
         final Thread threadA = new Thread("threadA") {
             @Override
@@ -77,10 +75,29 @@ public class Problem1 {
             }
         };
 
+
         long mainStart = System.nanoTime();
         threadA.start();
+        try {
+            threadA.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         threadB.start();
+        try {
+            threadB.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         threadC.start();
+        try {
+            threadC.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         long mainEnd = System.nanoTime();
 
         long mainDuration = TimeUnit.NANOSECONDS.toMillis(mainEnd - mainStart);
