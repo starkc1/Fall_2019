@@ -2,16 +2,16 @@ import java.util.Arrays;
 
 public class GenericStack<E> {
 
-    private Object[] list;
+    private E[] list;
     
     //Default constructor with a size of 10
     public GenericStack() {
-        list = new Object[10];
+        list = new E[10];
     }
 
     //Constructor of specificed size
     public GenericStack(int size) {
-        list = new Object[size];
+        list = new E[size];
     }
 
     public int getSize() {
