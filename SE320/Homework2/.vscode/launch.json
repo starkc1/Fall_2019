@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Problem1",
+            "request": "launch",
+            "mainClass": "Problem1"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GenericStack",
+            "request": "launch",
+            "mainClass": "GenericStack"
+        }
+    ]
+}
