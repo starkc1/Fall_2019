@@ -1,0 +1,10 @@
+function DME(transmit1, transmit2, receive1, receive2)
+    
+    timeBetweenTransmit = transmit2 - transmit1
+    timeBetweenReceive = receive2 - receive1
+
+    timeBetweenFirst = receive1 - transmit1
+    distance = (timeBetweenFirst - 50) / 12.36
+
+    
+end
