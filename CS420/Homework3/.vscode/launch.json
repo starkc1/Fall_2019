@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - race4",
+            "request": "launch",
+            "mainClass": "race4",
+            "projectName": "Homework3_f657911f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - race3",
+            "request": "launch",
+            "mainClass": "race3",
+            "projectName": "Homework3_f657911f"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - race2",
             "request": "launch",
             "mainClass": "race2"
