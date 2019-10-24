@@ -1,5 +1,18 @@
 import java.lang.Thread;
 
+/*
+Course: CS 420
+Assignment: Homework 3
+Problem: Problem 2
+Made By: Cameron Stark
+Function: A Program to show how the jvm handles and organizes treads that are changing the same value
+Instructions: 
+    Step 1: javac race2.java
+    Step 2: java race2.java
+    or
+    Load file into eclipse and run
+*/
+
 public class race2 {
     static Resource sharedResource = new Resource();
 
@@ -10,9 +23,9 @@ public class race2 {
             public void run() {
                 int i = 0;
                 while(true) {
-                    i++;
-                    System.out.println(sharedResource.getValue());
-                    sharedResource.setValue(i);
+                    int value = sharedResource.getValue();
+                    System.out.println(value);
+                    sharedResource.setValue(value + 1);
                 }
             }
         };
@@ -22,9 +35,9 @@ public class race2 {
             public void run() {
                 int i = 0; 
                 while(true) {
-                    i--;
-                    System.out.println(sharedResource.getValue());
-                    sharedResource.setValue(i);
+                    int value = sharedResource.getValue();
+                    System.out.println(value);
+                    sharedResource.setValue(value - 1);
                 }
             }
         };

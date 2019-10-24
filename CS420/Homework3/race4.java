@@ -6,15 +6,17 @@ Course: CS 420
 Assignment: Homework 3
 Problem: Problem 1
 Made By: Cameron Stark
-Function: A Program to show how the sleep of thread either before or after a function and value change can cause race hazards
+Function: A Program to show how the sleep of thread either before or after a function and value change can cause race hazards but 
+    with the addition of the value changing function being used is synchronized
 Instructions: 
-    Step 1: javac race1.java
-    Step 2: java race1.java
+    Step 1: javac race4.java
+    Step 2: java race4.java
     or
     Load file into eclipse and run
 */
 
-public class race1 {
+public class race4 {
+
     static Resource sharedResource = new Resource();
 
     public static void main(String[] args) {
@@ -68,10 +70,9 @@ class Resource {
         return value;
     }
 
-    public void setValue(int v) {
+    public synchronized void setValue(int v) {
         if (Math.abs(value - v) != 1) {
             System.out.println("Mismatch: " + value  + " " + v);
         }
-        value = v;
     }
 }
