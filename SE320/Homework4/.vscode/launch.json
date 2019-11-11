@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Circle",
+            "request": "launch",
+            "mainClass": "Circle"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Problem1",
             "request": "launch",
             "mainClass": "Problem1"
