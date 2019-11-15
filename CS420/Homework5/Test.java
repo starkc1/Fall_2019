@@ -28,6 +28,7 @@ public class Test
 			fifo.insert(referenceString[i]);
 		}
 
+
 		// report the total number of page faults
 		System.out.println("LRU faults = " + lru.getPageFaultCount());
 		System.out.println("FIFO faults = " + fifo.getPageFaultCount());
