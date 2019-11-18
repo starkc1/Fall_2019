@@ -7,7 +7,7 @@ int main() {
     //CREATE AND READ IN MEMORY FILE BEGIN
     FILE *file = NULL;
     int i = 0;
-    int memory[65536];
+    unsigned char memory[65536] = {0};
 
     file = fopen("mem_in.txt", "r");
     
@@ -16,22 +16,14 @@ int main() {
         exit(0);
     }
 
-    int num;
-    while(!feof(file)) {
-        fscanf(file, "%d", num);
-        //memory[i] = num;
-        
-        printf("Number: %d\n", num);
+    char c;
+    while (!feof(file)) {
+        c = getc(file);
+        memory[i] = c;
+        //printf("%c", memory[i]);
         i++;
     }
-
-    // while (fgets(num, sizeof num, file) != NULL) {
-    //     memory[i] = num;
-    //     i++;
-    // }
     fclose(file);
-
-    printf("%d", memory[0]);
     //CREATE AND READ IN MEMORY FILE END
 
 
