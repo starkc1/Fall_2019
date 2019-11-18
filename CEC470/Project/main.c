@@ -7,7 +7,7 @@ int main() {
     //CREATE AND READ IN MEMORY FILE BEGIN
     FILE *file = NULL;
     int i = 0;
-    char* memory[65536];
+    int memory[65536];
 
     file = fopen("mem_in.txt", "r");
     
@@ -16,19 +16,19 @@ int main() {
         exit(0);
     }
 
-    char num[3];
-    // while(!feof(file)) {
-    //     fscanf(file, "%s", num);
-    //     memory[i] = (char) num;
+    int num;
+    while(!feof(file)) {
+        fscanf(file, "%d", num);
+        //memory[i] = num;
         
-    //     printf("Number: %s\n", memory[i]);
-    //     i++;
-    // }
-
-    while (fgets(num, sizeof num, file) != NULL) {
-        memory[i] = num;
+        printf("Number: %d\n", num);
         i++;
     }
+
+    // while (fgets(num, sizeof num, file) != NULL) {
+    //     memory[i] = num;
+    //     i++;
+    // }
     fclose(file);
 
     printf("%d", memory[0]);
