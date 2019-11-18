@@ -73,5 +73,6 @@ function result = shiftRight(register)
             resultCount = resultCount + 1;
         end
     end
+    
     result(1) = result(2);
 end
