@@ -125,6 +125,89 @@ char convertHexToBin(hex) {
             bin[2] = '1';
             bin[3] = '0';
             break;
+        
+        case '5':
+            bin[0] = '0';
+            bin[1] = '1';
+            bin[2] = '0';
+            bin[3] = '1';
+            break;
+
+        case '6':
+            bin[0] = '0';
+            bin[1] = '1';
+            bin[2] = '1';
+            bin[3] = '0';
+            break;    
+
+        case '7':
+            bin[0] = '0';
+            bin[1] = '1';
+            bin[2] = '1';
+            bin[3] = '1';
+            break;
+
+        case '8':
+            bin[0] = '1';
+            bin[1] = '0';
+            bin[2] = '0';
+            bin[3] = '0';
+            break;
+        
+        case '9':
+            bin[0] = '1';
+            bin[1] = '0';
+            bin[2] = '0';
+            bin[3] = '1';
+            break;
+        
+        case 'A':
+        case 'a':
+            bin[0] = '1';
+            bin[1] = '0';
+            bin[2] = '1';
+            bin[3] = '0';
+            break;
+        
+        case 'B':
+        case 'b':
+            bin[0] = '1';
+            bin[1] = '0';
+            bin[2] = '1';
+            bin[3] = '1';
+            break;
+
+        case 'C':
+        case 'c':
+            bin[0] = '1';
+            bin[1] = '1';
+            bin[2] = '0';
+            bin[3] = '0';
+            break;
+
+        case 'D':
+        case 'd':
+            bin[0] = '1';
+            bin[1] = '1';
+            bin[2] = '0';
+            bin[3] = '1';
+            break;
+
+        case 'E':
+        case 'e':
+            bin[0] = '1';
+            bin[1] = '1';
+            bin[2] = '1';
+            bin[3] = '0';
+            break;
+
+        case 'F':
+        case 'f':
+            bin[0] = '1';
+            bin[1] = '1';
+            bin[2] = '1';
+            bin[3] = '1';
+            break;
     }
 
     return bin;
