@@ -65,24 +65,8 @@ int main() {
 void getBytes(unsigned char hex, int byteNum) {
     switch (byteNum) {
         case 1:
-            switch (hex) {
-                case '0':
-                currentInstruction[0] = '0';
-                currentInstruction[1] = '0';
-                currentInstruction[2] = '0';
-                currentInstruction[3] = '0';
-                break;
-            }
             break;
         case 2:
-            switch (hex) {
-                case '0':
-                currentInstruction[0] = '0';
-                currentInstruction[1] = '0';
-                currentInstruction[2] = '0';
-                currentInstruction[3] = '0';
-                break;
-            }
             break;
     }
 }
