@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define HALT_OPCODE_a 0x1
-#define HALT_OPCODE_b 0x9
-
-void getBytes(unsigned char hex, int byteNum);
-int * convertHexToBin(char hex);
+//VARIABLES START
+#define HALT_OPCODE_a '1'
+#define HALT_OPCODE_b '9'
 
 unsigned char memory[65536] = {0};
 unsigned char ACC = 0;
@@ -14,18 +12,24 @@ unsigned char IR = 0;
 unsigned int MAR = 0;
 unsigned int PC = 0;
 
-unsigned char currentInstruction[24] = {0};
+char binaryNum[24] = "";
+//VARIABLES END
+
+
+//FUNCTIONS START
+void convertHexToBin(char hex);
+//FUNCTIONS END
+
 int main() {
 
-    //CREATE AND READ IN MEMORY FILE BEGIN
+    //LOAD AND CREATE MEMORY START
     FILE *file = NULL;
     int i = 0;
-    
 
     file = fopen("mem_in.txt", "r");
-    
+
     if (file == NULL) {
-        printf("Error");
+        printf("Please put the text file in the same folder as exe, and name as mem_in.txt");
         exit(0);
     }
 
@@ -33,169 +37,94 @@ int main() {
     while (!feof(file)) {
         c = getc(file);
 
-        if (c == ' ') {
-
-        } else {
+        if (c != ' ') {
             memory[i] = c;
             //printf("%c", memory[i]);
         }
-
-        i++;
     }
     fclose(file);
-    //CREATE AND READ IN MEMORY FILE END
-
-    //PROGRAM START
-    int PCtracker = PC;
-    
-    while (memory[PCtracker] != HALT_OPCODE_a && memory[PCtracker + 1] != HALT_OPCODE_b) {
-        int PCindexer = PC;
-        getBytes(memory[PCindexer], 1);
-        PC++;
-        PCtracker = PC;
-    }
-    //PROGRAM END
-}
-
-void getBytes(unsigned char hex, int byteNum) {
-    int *binary = convertHexToBin((char) '0');
+    //LOAD AND CREATE MEMORY END
     
 
-    for (int i = 0; i < 4; i++) {
-        printf("test %d", binary[i]);
-    }
-
-    switch (byteNum) {
-        case 1:
-            
-            break;
-        case 2:
-            break;
-    }
+    convertHexToBin('c');
+    printf("%s", binaryNum);
 }
 
-int * convertHexToBin(char hex) {
-    int* bin;
+void convertHexToBin(char hex) {
     
     switch (hex) {
         case '0':
-            bin[0] = 0;
-            bin[1] = 0;
-            bin[2] = 0;
-            bin[3] = 0;
+            strcat(binaryNum, "0000");
             break;
         
-        // case '1':
-        //     bin[0] = '0';
-        //     bin[1] = '0';
-        //     bin[2] = '0';
-        //     bin[3] = '1';
-        //     break;
+        case '1':
+            strcat(binaryNum, "0001");
+            break;
         
-        // case '2':
-        //     bin[0] = '0';
-        //     bin[1] = '0';
-        //     bin[2] = '1';
-        //     bin[3] = '0';
-        //     break;
+        case '2':
+            strcat(binaryNum, "0010");
+            break;
 
-        // case '3':
-        //     bin[0] = '0';
-        //     bin[1] = '0';
-        //     bin[2] = '1';
-        //     bin[3] = '1';
-        //     break;
+        case '3':
+            strcat(binaryNum, "0011");
+            break;
         
-        // case '4':
-        //     bin[0] = '0';
-        //     bin[1] = '0';
-        //     bin[2] = '1';
-        //     bin[3] = '0';
-        //     break;
+        case '4':
+            strcat(binaryNum, "0100");
+            break;
         
-        // case '5':
-        //     bin[0] = '0';
-        //     bin[1] = '1';
-        //     bin[2] = '0';
-        //     bin[3] = '1';
-        //     break;
+        case '5':
+            strcat(binaryNum, "0101");
+            break;
 
-        // case '6':
-        //     bin[0] = '0';
-        //     bin[1] = '1';
-        //     bin[2] = '1';
-        //     bin[3] = '0';
-        //     break;    
+        case '6':
+            strcat(binaryNum, "0110");
+            break;    
 
-        // case '7':
-        //     bin[0] = '0';
-        //     bin[1] = '1';
-        //     bin[2] = '1';
-        //     bin[3] = '1';
-        //     break;
+        case '7':
+            strcat(binaryNum, "0111");
+            break;
 
-        // case '8':
-        //     bin[0] = '1';
-        //     bin[1] = '0';
-        //     bin[2] = '0';
-        //     bin[3] = '0';
-        //     break;
+        case '8':
+            strcat(binaryNum, "1000");
+            break;
         
-        // case '9':
-        //     bin[0] = '1';
-        //     bin[1] = '0';
-        //     bin[2] = '0';
-        //     bin[3] = '1';
-        //     break;
+        case '9':
+            strcat(binaryNum, "1001");
+            break;
         
-        // case 'A':
-        // case 'a':
-        //     bin[0] = '1';
-        //     bin[1] = '0';
-        //     bin[2] = '1';
-        //     bin[3] = '0';
-        //     break;
+        case 'A':
+        case 'a':
+            strcat(binaryNum, "1010");
+            break;
         
-        // case 'B':
-        // case 'b':
-        //     bin[0] = '1';
-        //     bin[1] = '0';
-        //     bin[2] = '1';
-        //     bin[3] = '1';
-        //     break;
+        case 'B':
+        case 'b':
+            strcat(binaryNum, "1011");
+            break;
 
-        // case 'C':
-        // case 'c':
-        //     bin[0] = '1';
-        //     bin[1] = '1';
-        //     bin[2] = '0';
-        //     bin[3] = '0';
-        //     break;
+        case 'C':
+        case 'c':
+            strcat(binaryNum, "1100");
+            break;
 
-        // case 'D':
-        // case 'd':
-        //     bin[0] = '1';
-        //     bin[1] = '1';
-        //     bin[2] = '0';
-        //     bin[3] = '1';
-        //     break;
+        case 'D':
+        case 'd':
+            strcat(binaryNum, "1101");
+            break;
 
-        // case 'E':
-        // case 'e':
-        //     bin[0] = '1';
-        //     bin[1] = '1';
-        //     bin[2] = '1';
-        //     bin[3] = '0';
-        //     break;
+        case 'E':
+        case 'e':
+            strcat(binaryNum, "1110");
+            break;
 
-        // case 'F':
-        // case 'f':
-        //     bin[0] = '1';
-        //     bin[1] = '1';
-        //     bin[2] = '1';
-        //     bin[3] = '1';
-        //     break;
+        case 'F':
+        case 'f':
+            bin[0] = '1';
+            bin[1] = '1';
+            bin[2] = '1';
+            bin[3] = '1';
+            break;
     }
 
-    return (bin);
 }
