@@ -5,8 +5,10 @@
 //VARIABLES START
 #define HALT_OPCODE_a '1'
 #define HALT_OPCODE_b '9'
+#define HALT_OPCODE "19"
 
-unsigned char memory[65536] = {0};
+//unsigned char memory[65536] = {0};
+char memory[65538] = "";
 unsigned char ACC = 0;
 unsigned char IR = 0;
 unsigned int MAR = 0;
@@ -18,6 +20,8 @@ char binaryNum[24] = "";
 
 //FUNCTIONS START
 void convertHexToBin(char hex);
+void fetchNextInstruction();
+void executeNextInstruction();
 //FUNCTIONS END
 
 int main() {
@@ -38,16 +42,51 @@ int main() {
         c = getc(file);
 
         if (c != ' ') {
-            memory[i] = c;
-            //printf("%c", memory[i]);
+            //memory[i] = c;
+            strncat(memory, &c, 1);
         }
+        i++;
     }
     fclose(file);
     //LOAD AND CREATE MEMORY END
     
 
-    convertHexToBin('c');
-    printf("%s", binaryNum);
+    // convertHexToBin(memory[0]);
+    // convertHexToBin(memory[1]);
+    // convertHexToBin(memory[2]);
+    // convertHexToBin(memory[3]);
+    // convertHexToBin(memory[4]);
+    // convertHexToBin(memory[5]);
+    // printf("%s\n", binaryNum);
+    //printf("%c", binaryNum[0]);
+
+    //READ THROUGH INSTRUCTIONS START
+    char currentHex[2] = "";
+    int PCIndexer = 0;
+    for (int j = 0; j < sizeof(memory); j++) {
+        strncat(currentHex, &memory[PCIndexer], 1);
+        strncat(currentHex, &memory[PCIndexer + 1], 1);
+
+        if (strcmp(currentHex, HALT_OPCODE) == 0) {
+            j = sizeof(memory) + 1;
+            return 0;
+        } else { 
+            printf("%s\n", currentHex);
+            fetchNextInstruction();
+            executeNextInstruction();
+            currentHex[0] = 0;
+            PCIndexer = PC;
+        }
+    }
+    //READ THROUGH INSTRUCTIONS END
+}
+
+void fetchNextInstruction() {
+
+}
+
+void executeNextInstruction() {
+    PC = PC + 2;
 }
 
 void convertHexToBin(char hex) {
@@ -120,10 +159,7 @@ void convertHexToBin(char hex) {
 
         case 'F':
         case 'f':
-            bin[0] = '1';
-            bin[1] = '1';
-            bin[2] = '1';
-            bin[3] = '1';
+            strcat(binaryNum, "1111");
             break;
     }
 
