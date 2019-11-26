@@ -12,7 +12,7 @@ char memory[65538] = "";
 unsigned char ACC = 0;
 unsigned char IR = 0;
 unsigned int MAR = 0;
-unsigned int PC = 0;
+int PC = 0;
 
 char binaryNum[24] = "";
 //VARIABLES END
@@ -71,7 +71,7 @@ int main() {
             j = sizeof(memory) + 1;
             return 0;
         } else { 
-            printf("%s\n", currentHex);
+            //printf("%s\n", currentHex);
             fetchNextInstruction();
             executeNextInstruction();
             currentHex[0] = 0;
@@ -82,11 +82,19 @@ int main() {
 }
 
 void fetchNextInstruction() {
+    int instructionLength = PC + 6;
 
+    for (int i = PC; i < instructionLength; i++) {
+        printf("%c", memory[i]);
+        convertHexToBin(memory[i]);
+    }
+    printf("\n%s\n\n", binaryNum);
 }
 
 void executeNextInstruction() {
     PC = PC + 2;
+
+    binaryNum[0] = 0;
 }
 
 void convertHexToBin(char hex) {
