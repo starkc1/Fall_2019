@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Que62",
+            "request": "launch",
+            "mainClass": "Que62",
+            "projectName": "SE320_8b0b5ba8"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - HelloWorld",
             "request": "launch",
             "mainClass": "app.HelloWorld",

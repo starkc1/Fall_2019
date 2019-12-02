@@ -1,0 +1,8 @@
+SE 320
+Assignment 6
+Cameron Stark
+
+
+1.) Created a new thread out of the audio method to tell the time, so that the gui can still move the clock hands while the time is read out.
+
+2.) Possible outcomes are "first" and then "second", becuase of the call order and no "third" because that thread is never started.

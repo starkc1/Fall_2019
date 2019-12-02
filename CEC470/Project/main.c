@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 //VARIABLES START
 #define HALT_OPCODE_a '1'
@@ -9,12 +10,12 @@
 
 //unsigned char memory[65536] = {0};
 char memory[65538] = "";
-unsigned char ACC = 0;
-unsigned char IR = 0;
-unsigned int MAR = 0;
+unsigned char ACC[24] = "";
+char IR[24] = "";
+unsigned char MAR[24] = "";
 int PC = 0;
 
-char binaryNum[24] = "";
+//char IR[24] = "";
 //VARIABLES END
 
 
@@ -22,6 +23,11 @@ char binaryNum[24] = "";
 void convertHexToBin(char hex);
 void fetchNextInstruction();
 void executeNextInstruction();
+
+bool checkIfMemoryOp();
+bool checkIfBranchOp();
+
+void executeMemoryOp();
 //FUNCTIONS END
 
 int main() {
@@ -43,22 +49,15 @@ int main() {
 
         if (c != ' ') {
             //memory[i] = c;
-            strncat(memory, &c, 1);
+            if (c != '\n') {
+                strncat(memory, &c, 1);
+            }
+            
         }
         i++;
     }
     fclose(file);
     //LOAD AND CREATE MEMORY END
-    
-
-    // convertHexToBin(memory[0]);
-    // convertHexToBin(memory[1]);
-    // convertHexToBin(memory[2]);
-    // convertHexToBin(memory[3]);
-    // convertHexToBin(memory[4]);
-    // convertHexToBin(memory[5]);
-    // printf("%s\n", binaryNum);
-    //printf("%c", binaryNum[0]);
 
     //READ THROUGH INSTRUCTIONS START
     char currentHex[2] = "";
@@ -66,7 +65,7 @@ int main() {
     for (int j = 0; j < sizeof(memory); j++) {
         strncat(currentHex, &memory[PCIndexer], 1);
         strncat(currentHex, &memory[PCIndexer + 1], 1);
-
+        
         if (strcmp(currentHex, HALT_OPCODE) == 0) {
             j = sizeof(memory) + 1;
             return 0;
@@ -75,7 +74,7 @@ int main() {
             fetchNextInstruction();
             executeNextInstruction();
             currentHex[0] = 0;
-            PCIndexer = PC;
+            PCIndexer = PCIndexer + 1;
         }
     }
     //READ THROUGH INSTRUCTIONS END
@@ -85,89 +84,148 @@ void fetchNextInstruction() {
     int instructionLength = PC + 6;
 
     for (int i = PC; i < instructionLength; i++) {
-        printf("%c", memory[i]);
         convertHexToBin(memory[i]);
     }
-    printf("\n%s\n\n", binaryNum);
+    printf("%s\n", IR);
 }
 
 void executeNextInstruction() {
-    PC = PC + 2;
+    switch (IR[0]) {
+        case '0':
+            if (checkIfMemoryOp()) {
+                executeMemoryOp();
+            } else if (checkIfBranchOp()) {
+            }
+            break;
+        case '1':
+            
+            break;
+    }
+    //PC = PC + 6;
 
-    binaryNum[0] = 0;
+    IR[0] = 0;
+}
+
+void executeMemoryOp() {
+    switch(IR[4]) {
+        case '0':
+
+            break;
+        case '1':
+            switch (IR[5]) {
+                case '0':
+
+                    break;
+                case '1':
+
+                    break;
+            }
+            break;
+    }
+}
+
+bool checkIfMemoryOp() {
+    char memoryTest[12] = "";
+    for (int i = 0; i < 4; i++) {
+        strncat(memoryTest, &IR[i], 1);
+    }
+
+    if (strcmp(memoryTest, "0000") == 0) {
+        return true;
+    } else {
+        return false;
+    }
+
+    memoryTest[0] = 0;
+}
+
+bool checkIfBranchOp() {
+    char branchTest[24] = "";
+
+    for (int i = 0; i < 5; i++) {
+        strncat(branchTest, &IR[i], 1);
+    }
+
+    if (strcmp(branchTest, "00010") == 0) {
+        return true;
+    } else {
+        return false;
+    }
+
+    branchTest[0] = 0;
 }
 
 void convertHexToBin(char hex) {
     
     switch (hex) {
         case '0':
-            strcat(binaryNum, "0000");
+            strcat(IR, "0000");
             break;
         
         case '1':
-            strcat(binaryNum, "0001");
+            strcat(IR, "0001");
             break;
         
         case '2':
-            strcat(binaryNum, "0010");
+            strcat(IR, "0010");
             break;
 
         case '3':
-            strcat(binaryNum, "0011");
+            strcat(IR, "0011");
             break;
         
         case '4':
-            strcat(binaryNum, "0100");
+            strcat(IR, "0100");
             break;
         
         case '5':
-            strcat(binaryNum, "0101");
+            strcat(IR, "0101");
             break;
 
         case '6':
-            strcat(binaryNum, "0110");
+            strcat(IR, "0110");
             break;    
 
         case '7':
-            strcat(binaryNum, "0111");
+            strcat(IR, "0111");
             break;
 
         case '8':
-            strcat(binaryNum, "1000");
+            strcat(IR, "1000");
             break;
         
         case '9':
-            strcat(binaryNum, "1001");
+            strcat(IR, "1001");
             break;
         
         case 'A':
         case 'a':
-            strcat(binaryNum, "1010");
+            strcat(IR, "1010");
             break;
         
         case 'B':
         case 'b':
-            strcat(binaryNum, "1011");
+            strcat(IR, "1011");
             break;
 
         case 'C':
         case 'c':
-            strcat(binaryNum, "1100");
+            strcat(IR, "1100");
             break;
 
         case 'D':
         case 'd':
-            strcat(binaryNum, "1101");
+            strcat(IR, "1101");
             break;
 
         case 'E':
         case 'e':
-            strcat(binaryNum, "1110");
+            strcat(IR, "1110");
             break;
 
         case 'F':
         case 'f':
-            strcat(binaryNum, "1111");
+            strcat(IR, "1111");
             break;
     }
 

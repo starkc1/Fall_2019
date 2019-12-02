@@ -55,13 +55,25 @@ public class ClockWithAudio extends JApplet {
       clock.repaint();
       jlblDigitTime.setText(clock.getHour() + ":" + clock.getMinute()
         + ":" + clock.getSecond());
-      if (clock.getSecond() == 0)
-        announceTime(clock.getHour(), clock.getMinute());
+      if (clock.getSecond() == 0) {
+        new Thread(new Runnable(){
+        
+          @Override
+          public void run() {
+            announceTime(clock.getHour(), clock.getMinute());
+          }
+        }).start();
+      }
+
+        //announceTime(clock.getHour(), clock.getMinute());
     }
   }
 
   /** Announce the current time at every minute */
   public void announceTime(int hour, int minute) {
+    
+
+        
     // Announce hour
     hourAudio[hour % 12].play();
 
