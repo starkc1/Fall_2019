@@ -28,6 +28,8 @@ bool checkIfMemoryOp();
 bool checkIfBranchOp();
 
 void executeMemoryOp();
+
+void performAddCommand();
 //FUNCTIONS END
 
 int main() {
@@ -98,12 +100,38 @@ void executeNextInstruction() {
             }
             break;
         case '1':
-            
+            char function[3] = "";
+            strncat(function, &IR[1], 1);
+            strncat(function, &IR[2], 1);
+            strncat(function, &IR[3], 1);
+
+            if (strcmp(function, '000') == 0) {
+                performAddCommand();
+            } else if (strcmp(function, '001') == 0) {
+
+            } else if (strcmp(function, '010') == 0) {
+
+            } else if (strcmp(function, '011') == 0) {
+
+            } else if (strcmp(function, '100') == 0) {
+
+            } else if (strcmp(function, '101') == 0) {
+
+            } else if (strcmp(function, '110') == 0) {
+
+            } else if (strcmp(function, '111') == 0) {
+
+            }
+
             break;
     }
-    //PC = PC + 6;
+
 
     IR[0] = 0;
+}
+
+void performAddCommand() {
+    
 }
 
 void executeMemoryOp() {
