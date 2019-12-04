@@ -117,7 +117,7 @@ void executeNextInstruction() {
                     sprintf(nextHex, "%02x", memory[PCIndex + 1]);
                     address = convertHexToDecimal(nextHex);
                     ACC = memory[address];
-                    PC = PC + 4;
+                    PC = PC + 3;
                 } else if (strcmp(lastBits, "001") == 0) {
                     char nextHex[2] = "";
                     sprintf(nextHex, "%02x", memory[PCIndex + 1]);
@@ -147,6 +147,7 @@ void executeNextInstruction() {
                     sprintf(nextHex, "%02x", memory[PCIndex + 2]);
                     value = value + convertHexToDecimal(nextHex);
                     MAR = value;
+                    PC = PC + 3;
                 } else if (strcmp(lastBits, "110") == 0) {
                     char nextHex[2] = "";
                     sprintf(nextHex, "%02x", memory[MAR]);
@@ -156,6 +157,7 @@ void executeNextInstruction() {
                     sprintf(nextHex, "%02x", memory[MAR + 1]);
                     value = value + convertHexToDecimal(nextHex);
                     MAR = value;
+                    PC = PC + 3;
                 }
             }
         } else { //Branch Operation
