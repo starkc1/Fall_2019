@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ClientBMI",
+            "request": "launch",
+            "mainClass": "ClientBMI"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ServerBMI",
+            "request": "launch",
+            "mainClass": "ServerBMI"
+        }
+    ]
+}
